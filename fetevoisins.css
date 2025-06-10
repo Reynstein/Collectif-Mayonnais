@@ -1,0 +1,156 @@
+/* Page Fête des Voisins 2025 */
+
+.voisins-page {
+  padding: 60px 20px;
+  text-align: center;
+}
+
+/* Titre principal */
+.voisins-page h1 {
+  font-size: 2.5em;
+  margin-bottom: 40px;
+  color: #333;
+}
+
+/* Galerie média */
+.media-gallery {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 20px;
+}
+
+/* Éléments média (images et vidéos) */
+.media-item {
+  width: 30%;
+  max-width: 300px;
+  height: auto;
+  border-radius: 10px;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+}
+
+/* Vidéos adaptables */
+.media-item video,
+video.media-item {
+  width: 100%;
+  height: auto;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .media-item {
+    width: 90%;
+  }
+}
+/* Fond noir général */
+body {
+  background-color: #000;
+  color: #fff;
+}
+
+/* Page Fête des Voisins 2025 */
+.voisins-page {
+  padding: 60px 20px;
+  text-align: center;
+}
+
+/* Titre principal */
+.voisins-page h1 {
+  font-size: 2.5em;
+  margin-bottom: 40px;
+  color: #fff;
+}
+
+/* Galerie média */
+.media-gallery {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 20px;
+}
+
+/* Éléments média */
+.media-item {
+  width: 48%;
+  max-width: 100%;
+  height: auto;
+  border-radius: 10px;
+  box-shadow: 0 4px 10px rgba(255, 255, 255, 0.1);
+  background-color: #111;
+}
+
+/* Vidéos adaptables */
+.media-item video,
+video.media-item {
+  width: 100%;
+  height: auto;
+}
+
+/* Responsive pour petits écrans */
+@media (max-width: 768px) {
+  .media-item {
+    width: 100%;
+  }
+}
+/* Photo panoramique en pleine largeur */
+.panorama {
+  width: 100% !important;
+  max-width: 100%;
+}
+/* Burger menu */
+.burger {
+  display: none;
+  font-size: 30px;
+  color: white;
+  cursor: pointer;
+  z-index: 1001;
+}
+
+@media screen and (max-width: 768px) {
+  .burger {
+    display: block;
+    position: absolute;
+    top: 25px;
+    right: 30px;
+  }
+
+  nav {
+    display: none;
+    position: absolute;
+    top: 70px;
+    left: 0;
+    background-color: #111;
+    width: 100%;
+    padding: 20px 0;
+  }
+
+  nav ul {
+    flex-direction: column;
+    gap: 10px;
+    padding-left: 0;
+    text-align: center;
+  }
+
+  .dropdown:hover .dropdown-menu {
+    display: none; /* Désactive le hover sur mobile */
+  }
+
+  .dropdown-menu {
+    position: static;
+    display: none;
+    background-color: #222;
+    box-shadow: none;
+  }
+
+  .dropdown-menu li a {
+    padding-left: 30px;
+  }
+
+  nav.hidden {
+    display: none !important;
+  }
+
+  nav:not(.hidden) {
+    display: block !important;
+  }
+}

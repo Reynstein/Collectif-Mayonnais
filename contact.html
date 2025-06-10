@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Contact - Collectif Mayonnais</title>
+    <link rel="stylesheet" href="style2.css" />
+</head>
+<body>
+
+    <header>
+        <div class="logo">Collectif Mayonnais</div>
+        <div class="burger" onclick="toggleMenu()">☰</div>
+        <nav id="main-nav" class="hidden">
+            <ul>
+                <li><a href="index.html">Accueil</a></li>
+                <li class="dropdown">
+                    <a href="evenements.html">Événements</a>
+                    <ul class="dropdown-menu">
+                        <li><a href="fete-voisins2025.html">Fête des voisins 2025</a></li>
+                        <li><a href="#">Fête de la musique 2025</a></li>
+                        <li><a href="#">......</a></li>
+                    </ul>
+                </li>
+                <li class="dropdown">
+                    <a href="publicites.html">Publicités</a>
+                    <ul class="dropdown-menu">
+                        <li><a href="pub-musique2025.html">Pub Fête de la Musique 2025</a></li>
+                        <li><a href="#">A.........</a></li>
+                    </ul>
+                </li>
+                <li><a href="contact.html">Contact</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main class="contact-page">
+        <canvas id="matrix"></canvas> <div class="overlay static-overlay">
+            <h1>Nous contacter</h1>
+            <p>Voici comment nous joindre :</p>
+            <ul class="contact-infos">
+                <li><strong>Email :</strong> <a href="mailto:collectif.mayonnais@gmail.com">collectifmayonnais@gmail.com</a></li>
+                <li><strong>Téléphone :</strong> <a href="tel:+33744955570">07 44 95 55 70</a></li>
+                <li><strong>Facebook :</strong> <a href="https://www.facebook.com/collectifmayonnais" target="_blank">Facebook Collectif Mayonnais</a></li>
+                <li><strong>YouTube :</strong> <a href="https://www.youtube.com/@Collectif-Mayonnais" target="_blank">Chaîne YouTube</a></li>
+            </ul>
+        </div>
+    </main>
+
+    <script>
+        function toggleMenu() {
+            const nav = document.getElementById('main-nav');
+            nav.classList.toggle('hidden');
+        }
+
+        // Dropdown mobile
+        document.querySelectorAll('.dropdown > a').forEach(link => {
+            link.addEventListener('click', function (e) {
+                if (window.innerWidth <= 768) {
+                    e.preventDefault();
+                    const submenu = this.nextElementSibling;
+                    submenu.style.display = (submenu.style.display === 'flex') ? 'none' : 'flex';
+                }
+            });
+        });
+    </script>
+
+    <script>
+        const canvas = document.getElementById("matrix");
+        const ctx = canvas.getContext("2d");
+
+        canvas.height = window.innerHeight;
+        canvas.width = window.innerWidth;
+
+        const letters = "01";
+        const fontSize = 14;
+        const columns = canvas.width / fontSize;
+
+        const drops = Array(Math.floor(columns)).fill(1);
+
+        function drawMatrix() {
+            ctx.fillStyle = "rgba(0, 0, 0, 0.05)";
+            ctx.fillRect(0, 0, canvas.width, canvas.height);
+
+            ctx.fillStyle = "#0F0";
+            ctx.font = fontSize + "px monospace";
+
+            for (let i = 0; i < drops.length; i++) {
+                const text = letters[Math.floor(Math.random() * letters.length)];
+                ctx.fillText(text, i * fontSize, drops[i] * fontSize);
+
+                if (drops[i] * fontSize > canvas.height && Math.random() > 0.975) {
+                    drops[i] = 0;
+                }
+                drops[i]++;
+            }
+        }
+
+        setInterval(drawMatrix, 33);
+
+        // Redimensionnement
+        window.addEventListener("resize", () => {
+            canvas.width = window.innerWidth;
+            canvas.height = window.innerHeight;
+        });
+    </script>
+
+</body>
+</html>
